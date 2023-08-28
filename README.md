@@ -1,4 +1,4 @@
-# so_long
+# So_long
 "And thanks for all the fish!"
 
 This project is a very small 2D game.
