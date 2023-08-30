@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../include/header.h"
 
 int	reversed_char_bis(t_sprite *src, t_sprite **dest, double i, t_mlx *mlx)
 {

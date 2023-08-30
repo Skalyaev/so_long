@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../include/header.h"
 
 int	assign_it(t_sprite **sprite, t_sprite *img, t_mlx *mlx)
 {	

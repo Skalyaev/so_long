@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../include/header.h"
 
 int	check_last_wall(t_map *map_infos, int size, int len, int *i)
 {

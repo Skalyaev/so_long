@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../include/header.h"
 
 int	free_sprites(t_mlx *mlx, t_sprite *sprite)
 {

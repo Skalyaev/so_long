@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../include/header.h"
 
 void	put_images(int i, int j, t_mlx *mlx, t_sprite *sprite)
 {

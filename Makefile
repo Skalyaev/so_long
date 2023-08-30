@@ -1,56 +1,46 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: anguinau <constantasg@gmail.com>           +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/10/27 01:48:21 by anguinau          #+#    #+#              #
-#    Updated: 2022/02/07 16:20:40 by anguinau         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME		= so_long
-SRCS		= src/main.c \
-		  src/parsing.c \
-		  src/check_map_infos.c \
-		  src/create_map_tab.c \
-		  src/mlx_start.c \
-		  src/upload_sprites.c \
-		  src/reversed_char.c \
-		  src/key_hook.c \
-		  src/loop_hook.c \
-		  src/loop_hook_bis.c \
-		  src/draw.c \
-		  src/free_map_infos.c \
-		  src/assign_sprites.c
-OBJS		= $(SRCS:.c=.o)
+
 CC		= gcc
 CFLAGS		= -Wall -Wextra -Werror -fsanitize=address
-INCLUDES	= mlx_linux/ -lmlx -lXext -lX11
-RM		= rm -f
+RM		= rm -rf
 
-.c.o			:
-				${CC} ${CFLAGS} -c $< -o ${<:.c=.o} 
+SRC_DIR		= src
+OBJ_DIR		= obj
+SRC_EXT		= c
+SRC_COUNT	= $(shell find $(SRC_DIR) -type f -name "*.$(SRC_EXT)" | wc -l)
+SRC		= $(shell find $(SRC_DIR) -type f -name "*.$(SRC_EXT)")
+OBJ		= $(subst $(SRC_DIR),$(OBJ_DIR),$(SRC:.c=.o))
+LIB		= mlx_linux/ -lmlx -lXext -lX11
 
-all			:	${NAME}
+all		: ${NAME}
 
-make_mlx		:
-				cd mlx_linux && make
+make_mlx	:
+		cd mlx_linux && make
 
-clean_mlx		:
-				cd mlx_linux && make clean
+clean_mlx	:
+		cd mlx_linux && make clean
 
+ifeq ($(SRC_COUNT), 13)
+${NAME}		: make_mlx $(OBJ_DIR) ${OBJ}
+		${CC} ${CFLAGS} -o ${NAME} ${OBJS} -L ${LIB} 
+else
+$(NAME)		:
+		@echo "Srcs corrupted, aborting"
+endif
 
-${NAME}			:	make_mlx ${OBJS}
-				${CC} ${CFLAGS} -o ${NAME} ${OBJS} -L ${INCLUDES} 
+$(OBJ_DIR)	:
+		@mkdir $(OBJ_DIR)
 
-clean			:
-				${RM} ${OBJS}
+$(OBJ_DIR)/%.o	: $(SRC_DIR)/%.$(SRC_EXT)
+		$(CC) $(CFLAGS) -c $< -o $(<:.$(SRC_EXT)=.o)
+		@mv $(SRC_DIR)/*.o $@
 
-fclean			:	clean
-					${RM} ${NAME}
+clean		:
+		${RM} ${OBJ_DIR}
 
-re			:	fclean all
+fclean		: clean
+		${RM} ${NAME}
 
-.PHONY			:	all clean fclean re
+re		: fclean all
+
+.PHONY		: all bonus clean fclean re
