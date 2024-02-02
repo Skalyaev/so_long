@@ -13,7 +13,7 @@
 #ifndef HEADER_H
 #define HEADER_H
 
-#include "mlx_linux/mlx.h"
+#include "../mlx_linux/mlx.h"
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -21,72 +21,73 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
+#include <stdio.h>
 
 typedef struct s_map
 {
-        char *map_struct;
-        int map_size;
-        int map_len;
-        int **map_tab;
+    char *map_struct;
+    int map_size;
+    int map_len;
+    int **map_tab;
 } t_map;
 
 typedef struct s_parsing
 {
-        char c;
-        struct s_parsing *next;
+    char c;
+    struct s_parsing *next;
 } t_parsing;
 
 typedef struct s_sprite
 {
-        void *ptr;
-        char *addr;
-        int bpp;
-        int line_size;
-        int endian;
-        int width;
-        int height;
-        int ica;
+    void *ptr;
+    char *addr;
+    int bpp;
+    int line_size;
+    int endian;
+    int width;
+    int height;
+    int ica;
 } t_sprite;
 
 typedef struct s_col
 {
-        int x;
-        int y;
-        int alive;
+    int x;
+    int y;
+    int alive;
 } t_col;
 
 typedef struct s_mlx
 {
-        void *ptr;
-        void *win;
-        double x_draw_offset;
-        double y_draw_offset;
-        int x_case_len;
-        int y_case_len;
-        int redraw;
-        int pts;
-        int escape_x;
-        int escape_y;
-        int end;
-        int moves;
-        int started;
-        int frame;
-        int width;
-        int height;
-        int col_nbr;
-        int x;
-        int old_x;
-        int y;
-        int old_y;
-        int dir;
-        int phase;
-        t_sprite *wall_sprite;
-        t_sprite *floor_sprite;
-        t_sprite **col_sprite;
-        t_sprite *exit_sprite;
-        t_sprite **char_static_sprite;
-        t_col **col;
-        t_map *map_infos;
+    void *ptr;
+    void *win;
+    double x_draw_offset;
+    double y_draw_offset;
+    int x_case_len;
+    int y_case_len;
+    int redraw;
+    int pts;
+    int escape_x;
+    int escape_y;
+    int end;
+    int moves;
+    int started;
+    int frame;
+    int width;
+    int height;
+    int col_nbr;
+    int x;
+    int old_x;
+    int y;
+    int old_y;
+    int dir;
+    int phase;
+    t_sprite *wall_sprite;
+    t_sprite *floor_sprite;
+    t_sprite **col_sprite;
+    t_sprite *exit_sprite;
+    t_sprite **char_static_sprite;
+    t_col **col;
+    t_map *map_infos;
 } t_mlx;
 
 int system_error(char *step, t_mlx *mlx);

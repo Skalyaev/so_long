@@ -7,7 +7,6 @@ RM		= rm -rf
 SRC_DIR		= src
 OBJ_DIR		= obj
 SRC_EXT		= c
-SRC_COUNT	= $(shell find $(SRC_DIR) -type f -name "*.$(SRC_EXT)" | wc -l)
 SRC		= $(shell find $(SRC_DIR) -type f -name "*.$(SRC_EXT)")
 OBJ		= $(subst $(SRC_DIR),$(OBJ_DIR),$(SRC:.c=.o))
 LIB		= mlx_linux/ -lmlx -lXext -lX11
@@ -20,13 +19,8 @@ make_mlx	:
 clean_mlx	:
 		cd mlx_linux && make clean
 
-ifeq ($(SRC_COUNT), 13)
 ${NAME}		: make_mlx $(OBJ_DIR) ${OBJ}
-		${CC} ${CFLAGS} -o ${NAME} ${OBJS} -L ${LIB} 
-else
-$(NAME)		:
-		@echo "Srcs corrupted, aborting"
-endif
+		${CC} ${CFLAGS} -o ${NAME} ${OBJ} -L ${LIB} 
 
 $(OBJ_DIR)	:
 		@mkdir $(OBJ_DIR)
