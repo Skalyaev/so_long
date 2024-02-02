@@ -21,5 +21,7 @@ The other goals are similar to every other goal for this first year: being rigor
 > X11 needed.
 
 `sudo apt install libxext-dev libx11-dev libbsd-dev`
+
 `make`
+
 `./so_long maps/map.ber`
