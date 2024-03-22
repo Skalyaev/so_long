@@ -19,6 +19,9 @@ make_mlx	:
 clean_mlx	:
 		cd mlx_linux && make clean
 
+fclean_mlx	:
+		cd mlx_linux && make fclean
+
 ${NAME}		: make_mlx $(OBJ_DIR) ${OBJ}
 		${CC} ${CFLAGS} -o ${NAME} ${OBJ} -L ${LIB} 
 
@@ -29,10 +32,10 @@ $(OBJ_DIR)/%.o	: $(SRC_DIR)/%.$(SRC_EXT)
 		$(CC) $(CFLAGS) -c $< -o $(<:.$(SRC_EXT)=.o)
 		@mv $(SRC_DIR)/*.o $@
 
-clean		:
+clean		: clean_mlx
 		${RM} ${OBJ_DIR}
 
-fclean		: clean
+fclean		: clean fclean_mlx
 		${RM} ${NAME}
 
 re		: fclean all
