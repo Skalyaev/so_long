@@ -7,6 +7,9 @@ Vous allez maintenant prendre en main la bibliothèque graphique de l'école : l
 
 Les objectifs de ce projet sont similaires à ceux de votre première année : faire preuve de rigueur, améliorer vos compétences en programmation C, utiliser des algorithmes basiques, rechercher des informations de manière autonome,
 
+## Preview
+![](https://github.com/Skalyaeve/images/blob/main/screenshot/solong.gif)
+
 ## Install
 ```bash
 sudo apt update -y
