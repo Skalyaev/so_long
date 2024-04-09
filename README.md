@@ -1,26 +1,57 @@
 # So Long
-> *And thanks for all the fish!*
+> *Ce projet est un jeu 2D simple conçu pour vous familiariser avec l'utilisation de textures, de sprites et quelques éléments de gameplay de base.*
 
-*Being a developer is a great thing for creating your own game.*
-*But a good game needs some good assets.*
-*In order to create 2D games, you will have to search for tiles, tilesets, sprites, and sprite sheets.*
-*Fortunately, some talented artists are willing to share their works on platforms like: itch.io*
-*In any case, try to respect other people’s work.*
+Il est temps de vous lancer dans votre premier projet graphique ! "So Long" vous fournira des bases dans les compétences suivantes : gestion de fenêtre, gestion des événements, choix de couleurs et de textures.
 
-## Objectives
-> *This project is a very small 2D game.*
-> *Its purpose is to make you work with textures, sprites, and some other very basic gameplay elements.*
+Vous allez maintenant prendre en main la bibliothèque graphique de l'école : la MiniLibX ! Cette bibliothèque, développée en interne, inclut des outils basiques pour ouvrir une fenêtre, créer des images et gérer des événements clavier et souris.
 
-It’s time for you to create a basic computer graphics project!
-so long will help you improve your skills in the following areas: window management, event handling, colors, textures, and so forth.
-You are going to use the school graphical library: the MiniLibX!
-This library was developed internally and includes basic necessary tools to open a window, create images and deal with keyboard and mouse events.
-The other goals are similar to every other goal for this first year: being rigorous, level up in C programming, use basic algorithms, do some information research, and so forth.
+Les objectifs de ce projet sont similaires à ceux de votre première année : faire preuve de rigueur, améliorer vos compétences en programmation C, utiliser des algorithmes basiques, rechercher des informations de manière autonome,
+
+## Install
+```bash
+sudo apt update -y
+sudo apt install -y unzip
+sudo apt install -y gcc
+sudo apt install -y make
+sudo apt install -y libxext-dev
+sudo apt install -y libx11-dev
+sudo apt install -y libbsd-dev
+sudo apt install -y xorg
+sudo apt install -y git
+```
+```bash
+mkdir -p $HOME/.local/bin
+mkdir -p $HOME/.local/share
+mkdir -p $HOME/.local/src
+mkdir -p $HOME/.local/include
+```
+```bash
+link=Skalyaeve/so_long
+name=solong
+
+git clone https://github.com/$link.git $name
+cd $name/resource && unzip mlx
+cd .. && make && make clean
+
+ln -s $PWD/$name $HOME/.local/bin/$name
+ln -s $PWD/resource $HOME/.local/share/$name
+ln -s $PWD/src $HOME/.local/src/$name
+ln -s $PWD/include $HOME/.local/include/$name
+```
 
 ## Usage
-> X11 needed.
+```bash
+export PATH=$HOME/.local/bin:$PATH
+solong <map>
 ```
-sudo apt install libxext-dev libx11-dev libbsd-dev
-make
-./so_long maps/map.ber
+
+## Uninstall
+```bash
+name=solong
+
+rm -r $name
+rm $HOME/.local/bin/$name
+rm $HOME/.local/share/$name
+rm $HOME/.local/src/$name
+rm $HOME/.local/include/$name
 ```

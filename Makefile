@@ -1,43 +1,49 @@
-NAME		= so_long
+NAME=solong
 
-CC		= gcc
-CFLAGS		= -Wall -Wextra -Werror -fsanitize=address
-RM		= rm -rf
+CC=gcc
+CFLAGS=-Wall -Wextra -Werror
 
-SRC_DIR		= src
-OBJ_DIR		= obj
-SRC_EXT		= c
-SRC		= $(shell find $(SRC_DIR) -type f -name "*.$(SRC_EXT)")
-OBJ		= $(subst $(SRC_DIR),$(OBJ_DIR),$(SRC:.c=.o))
-LIB		= mlx_linux/ -lmlx -lXext -lX11
+INCLUDE_DIR=include
+HEADER_EXT=h
+HEADER=$(shell find $(INCLUDE_DIR) -type f -name "*.$(HEADER_EXT)")
 
-all		: ${NAME}
+SRC_EXT=c
+SRC_DIR=src
+SRC=$(shell find $(SRC_DIR) -type f -name "*.$(SRC_EXT)")
 
-make_mlx	:
-		cd mlx_linux && make
+OBJ_DIR=obj
+OBJ=$(subst $(SRC_DIR),$(OBJ_DIR),$(SRC:.c=.o))
 
-clean_mlx	:
-		cd mlx_linux && make clean
+MLX=resource/mlx
+LIB=$(MLX) -lmlx -lXext -lX11
 
-fclean_mlx	:
-		cd mlx_linux && make fclean
+RM=rm -rf
 
-${NAME}		: make_mlx $(OBJ_DIR) ${OBJ}
-		${CC} ${CFLAGS} -o ${NAME} ${OBJ} -L ${LIB} 
+all: ${NAME}
 
-$(OBJ_DIR)	:
-		@mkdir $(OBJ_DIR)
+${NAME}: $(OBJ_DIR) ${OBJ}
+	cd $(MLX) && make && cd ..
+	${CC} ${CFLAGS} ${OBJ} -o ${NAME} -L./${LIB}
 
-$(OBJ_DIR)/%.o	: $(SRC_DIR)/%.$(SRC_EXT)
-		$(CC) $(CFLAGS) -c $< -o $(<:.$(SRC_EXT)=.o)
-		@mv $(SRC_DIR)/*.o $@
+$(OBJ_DIR):
+	@mkdir $(OBJ_DIR)
 
-clean		: clean_mlx
-		${RM} ${OBJ_DIR}
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.$(SRC_EXT) ${HEADER}
+	$(CC) $(CFLAGS) -c $< -o $(<:.$(SRC_EXT)=.o)
+	@mv $(SRC_DIR)/*.o $@
 
-fclean		: clean fclean_mlx
-		${RM} ${NAME}
+clean:
+	cd $(MLX) && make clean && cd ..
+	${RM} ${OBJ_DIR}
 
-re		: fclean all
+fclean: clean
+	cd $(MLX) && make fclean && cd ..
+	${RM} ${NAME}
 
-.PHONY		: all bonus clean fclean re
+clean_mlx:
+
+fclean_mlx:
+
+re: fclean all
+
+.PHONY: all clean fclean re

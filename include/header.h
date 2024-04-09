@@ -13,7 +13,7 @@
 #ifndef HEADER_H
 #define HEADER_H
 
-#include "../mlx_linux/mlx.h"
+#include "../resource/mlx/mlx.h"
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>

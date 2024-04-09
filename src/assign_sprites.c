@@ -53,10 +53,23 @@ int resize_sprites(t_mlx *mlx, t_sprite *sprite, double i, double j)
 
 int assign_sprites(t_sprite **sprite, char *path, t_mlx *mlx)
 {
+        char *home = getenv("HOME");
+        if (!home)
+                return (0);
+        char resource[] = "/.local/share/solong/";
+        int len = strlen(home) + strlen(resource) + strlen(path) + 1;
+        char *full_path = malloc(len);
+        if (!full_path)
+                return (0);
+        strcpy(full_path, home);
+        strcat(full_path, resource);
+        strcat(full_path, path);
+        printf("full_path: %s\n", full_path);
         *sprite = malloc(sizeof(t_sprite));
         if (!*sprite)
                 return (0);
-        (*sprite)->ptr = mlx_xpm_file_to_image(mlx->ptr, path, &(*sprite)->width, &(*sprite)->height);
+        (*sprite)->ptr = mlx_xpm_file_to_image(mlx->ptr, full_path,
+                                            &(*sprite)->width, &(*sprite)->height);
         if (!(*sprite)->ptr)
                 return (0);
         (*sprite)->addr = mlx_get_data_addr((*sprite)->ptr, &(*sprite)->bpp,
