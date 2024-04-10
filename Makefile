@@ -14,8 +14,8 @@ SRC=$(shell find $(SRC_DIR) -type f -name "*.$(SRC_EXT)")
 OBJ_DIR=obj
 OBJ=$(subst $(SRC_DIR),$(OBJ_DIR),$(SRC:.c=.o))
 
-MLX=resource/mlx
-LIB=$(MLX) -lmlx -lXext -lX11
+MLX=mlx
+LIB=./$(MLX) -lmlx -lXext -lX11
 
 RM=rm -rf
 
@@ -23,7 +23,7 @@ all: ${NAME}
 
 ${NAME}: $(OBJ_DIR) ${OBJ}
 	cd $(MLX) && make && cd ..
-	${CC} ${CFLAGS} ${OBJ} -o ${NAME} -L./${LIB}
+	${CC} ${CFLAGS} ${OBJ} -o ${NAME} -L ${LIB}
 
 $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)
@@ -37,12 +37,7 @@ clean:
 	${RM} ${OBJ_DIR}
 
 fclean: clean
-	cd $(MLX) && make fclean && cd ..
 	${RM} ${NAME}
-
-clean_mlx:
-
-fclean_mlx:
 
 re: fclean all
 

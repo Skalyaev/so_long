@@ -64,7 +64,6 @@ int assign_sprites(t_sprite **sprite, char *path, t_mlx *mlx)
         strcpy(full_path, home);
         strcat(full_path, resource);
         strcat(full_path, path);
-        printf("full_path: %s\n", full_path);
         *sprite = malloc(sizeof(t_sprite));
         if (!*sprite)
                 return (0);

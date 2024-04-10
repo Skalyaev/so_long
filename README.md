@@ -19,8 +19,6 @@ sudo apt install -y make
 sudo apt install -y libxext-dev
 sudo apt install -y libx11-dev
 sudo apt install -y libbsd-dev
-sudo apt install -y xorg
-sudo apt install -y git
 ```
 ```bash
 mkdir -p $HOME/.local/bin
@@ -33,8 +31,7 @@ link=Skalyaeve/so_long
 name=solong
 
 git clone https://github.com/$link.git $name
-cd $name/resource && unzip mlx
-cd .. && make && make clean
+cd $name && unzip mlx && make && make clean
 
 ln -s $PWD/$name $HOME/.local/bin/$name
 ln -s $PWD/resource $HOME/.local/share/$name
