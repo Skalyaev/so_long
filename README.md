@@ -1,16 +1,16 @@
-# So Long
+# <p align="center">so_long</p>
 > *Ce projet est un jeu 2D simple conçu pour vous familiariser avec l'utilisation de textures, de sprites et quelques éléments de gameplay de base.*
+>
+> *Il est temps de vous lancer dans votre premier projet graphique ! "So Long" vous fournira des bases dans les compétences suivantes : gestion de fenêtre, gestion des événements, choix de couleurs et de textures.*
+>
+> *Vous allez maintenant prendre en main la bibliothèque graphique de l'école : la MiniLibX ! Cette bibliothèque, développée en interne, inclut des outils basiques pour ouvrir une fenêtre, créer des images et gérer des événements clavier et souris.*
+>
+> *Les objectifs de ce projet sont similaires à ceux de votre première année : faire preuve de rigueur, améliorer vos compétences en programmation C, utiliser des algorithmes basiques, rechercher des informations de manière autonome.*
 
-Il est temps de vous lancer dans votre premier projet graphique ! "So Long" vous fournira des bases dans les compétences suivantes : gestion de fenêtre, gestion des événements, choix de couleurs et de textures.
-
-Vous allez maintenant prendre en main la bibliothèque graphique de l'école : la MiniLibX ! Cette bibliothèque, développée en interne, inclut des outils basiques pour ouvrir une fenêtre, créer des images et gérer des événements clavier et souris.
-
-Les objectifs de ce projet sont similaires à ceux de votre première année : faire preuve de rigueur, améliorer vos compétences en programmation C, utiliser des algorithmes basiques, rechercher des informations de manière autonome,
-
-## Preview
+## Aperçu
 ![](https://github.com/Skalyaeve/images-1/blob/main/screenshot/solong.gif)
 
-## Install
+## Installer
 ```bash
 sudo apt update -y
 sudo apt install -y unzip
@@ -39,13 +39,13 @@ ln -s $PWD/src $HOME/.local/src/$name
 ln -s $PWD/include $HOME/.local/include/$name
 ```
 
-## Usage
+## Utiliser
 ```bash
 export PATH=$HOME/.local/bin:$PATH
 solong <map>
 ```
 
-## Uninstall
+## Désinstaller
 ```bash
 name=solong
 
