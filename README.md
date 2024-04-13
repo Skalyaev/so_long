@@ -7,10 +7,10 @@
 >
 > *Les objectifs de ce projet sont similaires à ceux de votre première année : faire preuve de rigueur, améliorer vos compétences en programmation C, utiliser des algorithmes basiques, rechercher des informations de manière autonome.*
 
-## Aperçu
+## Preview
 ![](https://github.com/Skalyaeve/images-1/blob/main/screenshot/solong.gif)
 
-## Installer
+## Install
 ```bash
 sudo apt update -y
 sudo apt install -y unzip
@@ -39,19 +39,20 @@ ln -s $PWD/src $HOME/.local/src/$name
 ln -s $PWD/include $HOME/.local/include/$name
 ```
 
-## Utiliser
+## Usage
 ```bash
 export PATH=$HOME/.local/bin:$PATH
 solong <map>
 ```
 
-## Désinstaller
+## Uninstall
 ```bash
 name=solong
 
-rm -r $name
+rm -rf $name
 rm $HOME/.local/bin/$name
 rm $HOME/.local/share/$name
 rm $HOME/.local/src/$name
 rm $HOME/.local/include/$name
 ```
+
