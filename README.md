@@ -27,10 +27,9 @@ mkdir -p $HOME/.local/src
 mkdir -p $HOME/.local/include
 ```
 ```bash
-link=Skalyaeve/so_long
 name=solong
 
-git clone https://github.com/$link.git $name
+git clone https://github.com/Skalyaeve/$name.git
 cd $name && unzip mlx && make && make clean
 
 ln -s $PWD/$name $HOME/.local/bin/$name
