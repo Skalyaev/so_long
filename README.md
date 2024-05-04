@@ -54,4 +54,3 @@ rm $HOME/.local/share/$name
 rm $HOME/.local/src/$name
 rm $HOME/.local/include/$name
 ```
-
